@@ -1,21 +1,13 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import ContactsNavigator from './navigation/ContactsNavigator';
+import ENV from './env';
+import * as firebase from 'firebase';
+import 'firebase/firestore';
+
+if (!firebase.apps.length) firebase.initializeApp(ENV);
+
+export const db = firebase.firestore();
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  return <ContactsNavigator />;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
